@@ -1,0 +1,20 @@
+  <h1> <%= name_titulo %>  ARTICULO </h1> #se declara variable locañ
+<%= form_for (@article) do |f| %> <!-- crea un formulario para el objeto @article_new -->
+    <!-- mostrar mensajes de error -->
+    <% @article.errors.full_messages.each do  |message|%>
+      <div>
+        -> <%= message %>
+      </div>
+    <% end %>
+
+    <div class="field">
+        <%= f.text_field :title, placeholder: "ingrese Titulo" %>
+    </div>
+    <div class="field form_control">
+      <%= f.text_area :body, placeholder:"ingrese el articulo", class:"text_area2" ,style:"height:250px; width:490px;"%>
+    </div>
+    <div>
+        <%= f.submit "Enviar articulo", style:"cursor:pointer; border:2px; background-color:rgb(213, 215, 121)"%>
+    </div>
+
+<% end %>

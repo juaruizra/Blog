@@ -1,0 +1,9 @@
+<h1>Articles#show</h1>
+<h1> <%= @article.title %></h1>
+<div >
+    <%= @article.body %>
+</div>
+
+<div>
+  <%= link_to "Editar",{:action=>"edit", :controller=>"articles", :id=>@article.id} %>
+</div>

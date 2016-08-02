@@ -1,0 +1,8 @@
+<h1>Articles#index</h1>
+
+<% @articles.each do |aux| %>
+    <h1> <%= link_to aux.title ,aux%> </h1>
+    <div >
+      <%= aux.body %>*** <%=link_to 'Delete Post',aux,method: :delete, class:"red" %>
+    </div>
+<% end %>

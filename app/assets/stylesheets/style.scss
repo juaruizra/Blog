@@ -1,0 +1,32 @@
+html,body{
+  margin: 0px;
+//  font-family: 'Open Sans', sans-serif;
+}
+a,a:visited{// para que no se marque el azul al dar clic en la barra de navegacion
+  color:inherit ;
+}
+.red{// para que no se marque el azul al dar clic en la barra de navegacion
+    color: #cc3210 !important;
+}
+
+.fondo{
+    background-color: #36bb70;
+    padding: 10px 7px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+.texto{
+    color: #d5e8e4 !important;
+
+}
+
+.field { //formulario articles>new.html
+  margin-top: 1em;
+}
+.form_control{
+  border: 1px solid #888;
+  border: 2px solid;
+  width: 500px;
+  resize: horizontal;
+  overflow: auto;
+}
