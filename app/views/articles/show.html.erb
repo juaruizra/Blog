@@ -1,8 +1,15 @@
 <h1>Articles#show</h1>
+<% unless @article.user.nil?%>
+  <p>
+    Escrito por : <%= @article.user.email %>
+  </p>
+<% end %>
+<p>
+  # de visitas : <%= @article.visits_count %>
+</p>
 <h1> <%= @article.title %></h1>
-<div >
-    <%= @article.body %>
-</div>
+<div ><%= @article.body %></div>
+
 
 <div>
   <%= link_to "Editar",{:action=>"edit", :controller=>"articles", :id=>@article.id} %>
