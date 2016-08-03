@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_article
+  before_action :authenticate_user!
 
   # GET /comments
   # GET /comments.json
@@ -24,11 +26,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comment.new(comment_params) #modificado
+    @comment.article=@article #agregado
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment.article, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment.article, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -56,18 +59,23 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @article, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
+# Use callbacks to share common setup or constraints between actions.
+    private
+    def set_article
+      @article = Article.find(params[:article_id])
+    end
+      private
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+      private
     def comment_params
       params.require(:comment).permit(:user_id, :article_id, :body)
     end

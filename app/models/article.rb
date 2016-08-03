@@ -3,6 +3,8 @@ class Article < ActiveRecord::Base
   # campos=> article.title()=> devuelve el titulo del darticulo
   # escribir metodos
   belongs_to :user
+  has_many :comment
+
   validates :title, presence: true
   validates :body, :presence => {:message => "Usted debe ingresar un título"}, length: {minimum: 2, maximum: 500, :message => "El título debe tener entre 2 y 500 caracteres"}
 

@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
   def show
     # @article =Article.find(params[:id])  #codigo igual
     @article.update_visits_count
+    @comment = Comment.new # pilas, anidado
   end
   # -----------------------------------
   #GET/articles/new

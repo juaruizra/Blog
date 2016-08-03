@@ -10,7 +10,15 @@
 <h1> <%= @article.title %></h1>
 <div ><%= @article.body %></div>
 
-
 <div>
   <%= link_to "Editar",{:action=>"edit", :controller=>"articles", :id=>@article.id} %>
 </div>
+<h3>***** Comentarios ***** </h3>
+<%= render "comments/form" %>
+<ul>
+  <% @article.comment.each do |aux|%>
+    <li>
+      <%= aux.body %> by: <%= aux.user.email%>
+    </li>
+  <% end %>
+</ul>
